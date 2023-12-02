@@ -28,7 +28,8 @@ const getUser = async (req, res, next) => {
 };
 const updateUser = async (req, res, next) => {
   try {
-    const { firstName, lastName, location, profileUrl, profession } = req.body;
+    const { firstName, lastName, location, profession, profileUrl } = req.body;
+
     const { userId } = req.body.user;
     const updateUser = {
       firstName,
@@ -43,9 +44,7 @@ const updateUser = async (req, res, next) => {
     });
     await user.populate({ path: "friends", select: "-password" });
     const token = createToken(user?._id);
-
     user.password = undefined;
-
     res.status(200).json({
       sucess: true,
       message: "User updated successfully",

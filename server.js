@@ -4,7 +4,7 @@ const app = require("./app");
 
 //conecting to mongoDB by URI
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(process.env.MONGO_URL, {
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
   })

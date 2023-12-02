@@ -49,7 +49,7 @@ const login = async (req, res) => {
     if (!user) return res.status(400).json({ msg: "User does not exist. " });
     const isMatchPassword = await comparePassword(password, user.password);
     if (!isMatchPassword)
-      return res.status(400).json({ msg: "Invalid credentials." });
+      return res.status(400).json({ msg: "Password not correct." });
 
     const token = createToken(user._id);
 

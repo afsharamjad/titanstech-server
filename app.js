@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 require("dotenv").config();
 const cors = require("cors"); //cors access
 const morgan = require("morgan");
@@ -14,10 +15,12 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
+
 //
 
 //routes Middleware
 app.use(require("./routes"));
+
 //* Catch HTTP 404
 app.use((req, res, next) => {
   next(createHttpError(404));
